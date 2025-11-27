@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roda dos Desafios</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+<h1>🎡 Roda dos Desafios</h1>
+
+<!-- Botões de níveis -->
+<div class="levels">
+<button class="level-btn active" onclick="mudarNivel('facil', this)">Fácil</button>
+<button class="level-btn" onclick="mudarNivel('medio', this)">Médio</button>
+<button class="level-btn" onclick="mudarNivel('dificil', this)">Difícil</button>
+</div>
+
+<!-- Seta -->
+<div id="arrow" class="arrow"></div>
+
+<!-- Roda -->
+<div id="wheel" class="wheel"></div>
+
+<!-- Botão -->
+<button class="spin" onclick="girar()">GIRAR 🎲</button>
+
+<!-- Resultado -->
+<div id="resultado"></div>
+
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
