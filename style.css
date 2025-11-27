@@ -1,138 +1,88 @@
 body {
-    margin: 0;
-    height: 100vh;
-    width: 100%;
     background: linear-gradient(135deg, #645bff, #00c3ff);
-    font-family: "Poppins", Arial, sans-serif;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    }
-    
-    .app-container {
+    font-family: Poppins, sans-serif;
+  }
+  
+  .app-container {
     text-align: center;
-    width: 90%;
-    max-width: 400px;
-    padding: 20px;
-    }
-    
-    h1 {
-    margin-bottom: 20px;
-    font-weight: 700;
-    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* Botões de níveis */
-    .levels {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
-    }
-    
-    .level-btn {
-    padding: 10px 18px;
-    font-size: 15px;
+  }
+  
+  .buttons .btn {
+    background: white;
+    color: black;
+    padding: 8px 20px;
+    border-radius: 20px;
+    margin: 5px;
     border: none;
-    border-radius: 25px;
-    background: #ffffffd0;
-    color: #4a42e6;
-    font-weight: 600;
     cursor: pointer;
-    transition: 0.2s;
-    }
-    
-    .level-btn:hover {
-    transform: scale(1.05);
-    }
-    
-    .active {
-    background: #ffe96a;
-    color: #000;
-    }
-    
-    /* Roda */
-    .wheel {
-    width: 300px;
-    height: 300px;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid black;
+    margin: 15px auto -10px;
+    z-index: 10;
+  }
+  
+  .wheel {
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
-    border: 8px solid #fff;
+    border: 5px solid white;
     position: relative;
+    transition: transform 4s ease-out;
     overflow: hidden;
-    margin: 20px auto;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.25);
-    transition: transform 3s ease-out;
-    }
-    
-    .slice {
+  }
+  
+  .wheel div {
+    position: absolute;
     width: 50%;
     height: 50%;
-    position: absolute;
-    top: 50%;
     left: 50%;
+    top: 50%;
     transform-origin: 0% 0%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    color: white;
-    font-size: 13px;
-    font-weight: 600;
     text-align: center;
-    }
-    
-    .s1 { background: #ff4f4f; transform: rotate(0deg) skewY(-30deg); }
-    .s2 { background: #ff914d; transform: rotate(60deg) skewY(-30deg); }
-    .s3 { background: #ffdd59; transform: rotate(120deg) skewY(-30deg); }
-    .s4 { background: #1dd1a1; transform: rotate(180deg) skewY(-30deg); }
-    .s5 { background: #54a0ff; transform: rotate(240deg) skewY(-30deg); }
-    .s6 { background: #9c6bff; transform: rotate(300deg) skewY(-30deg); }
-    
-    /* Seta */
-    .arrow {
-    width: 0;
-    height: 0;
-    border-left: 22px solid transparent;
-    border-right: 22px solid transparent;
-    border-bottom: 35px solid #ffffff;
-    margin: 5px auto;
-    transition: 0.2s;
-    }
-    
-    /* Animação de balançar quando a roda gira */
-    .arrow.spin-anim {
-    animation: bounce 0.3s infinite alternate;
-    }
-    
-    @keyframes bounce {
-    from { transform: translateY(0); }
-    to { transform: translateY(-8px); }
-    }
-    
-    /* Botão */
-    .spin {
-    padding: 12px 45px;
-    font-size: 18px;
-    font-weight: 700;
+  
+    /* deixa o texto sempre no centro da fatia */
+    padding: 0 20px;
+  }
+  
+  .wheel div span {
+    position: absolute;
+    transform-origin: center;
+    font-size: 15px;
+    font-weight: bold;
+    width: 120px;        /* controla área do texto */
+    text-align: center;  /* alinha bem */
+    color: white;
+  }
+  
+  
+  .spin-btn {
+    margin-top: 30px;
+    padding: 10px 30px;
     border: none;
-    border-radius: 25px;
-    background: #ffffff;
-    color: #4a42e6;
+    background: white;
+    color: black;
+    font-size: 18px;
+    border-radius: 20px;
     cursor: pointer;
-    margin-top: 10px;
-    transition: 0.2s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-    
-    .spin:hover {
-    transform: scale(1.07);
-    }
-    
-    #resultado {
-    margin-top: 25px;
-    font-size: 1.5rem;
-    min-height: 40px;
-    text-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    }
-    
+  }
+  
+  .resultado {
+    margin-top: 15px;
+    font-size: 20px;
+  }
+  

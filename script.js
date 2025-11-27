@@ -1,82 +1,84 @@
-// Desafios por nível
-const niveis = {
-    facil: [
-    "Faça um coração com as mãos ❤️",
-    "Conte seu doce favorito 🍬",
-    "Dê um sorriso gigante 😁",
-    "Imite um gato 😺",
-    "Fale um elogio para alguém 🌟",
-    "Dance por 5 segundos 💃"
-    ],
-    medio: [
-    "Cante um pedacinho de música 🎤",
-    "Imite alguém da sala 😂",
-    "Faça uma pose engraçada 🤪",
-    "Conte uma verdade sobre você 🤫",
-    "Faça 5 polichinelos 🤸",
-    "Fale uma curiosidade sua 👀"
-    ],
-    dificil: [
-    "Dança por 15 segundos 👯",
-    "Conte um mico seu 😳",
-    "Fale algo que nunca contou 😶",
-    "Imite um famoso 😂",
-    "Fale 3 verdades e 1 mentira 🤔",
-    "Deixe alguém escolher seu desafio 😈"
-    ]
-    };
-    
-    let nivelAtual = "facil";
-    
-    // Montar roda
-    function montarRoda() {
-    const wheel = document.getElementById("wheel");
-    wheel.innerHTML = "";
-    
-    niveis[nivelAtual].forEach((texto, i) => {
-    const slice = document.createElement("div");
-    slice.className = `slice s${i + 1}`;
-    slice.innerHTML = texto;
-    wheel.appendChild(slice);
-    });
-    }
-    
-    montarRoda();
-    
-    // Trocar nível
-    function mudarNivel(nivel, btn) {
-    nivelAtual = nivel;
-    
-    document.querySelectorAll(".level-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    
-    montarRoda();
-    document.getElementById("resultado").innerHTML = "";
-    }
-    
-    // Gira a roda
-    function girar() {
-    const wheel = document.getElementById("wheel");
-    const resultado = document.getElementById("resultado");
-    const arrow = document.getElementById("arrow");
-    const sound = document.getElementById("spinSound");
-    
-    resultado.innerHTML = "";
-    
-    // Ativar animação da seta
-    arrow.classList.add("spin-anim");
-    
-    
-    // Gira entre 1080 e 2160 graus
-    let randomDegrees = 1080 + Math.floor(Math.random() * 1080);
-    wheel.style.transform = `rotate(${randomDegrees}deg)`;
-    
-    setTimeout(() => {
-    const index = Math.floor(((randomDegrees % 360) / 60));
-    resultado.innerHTML = "🔎 Desafio: <b>" + niveis[nivelAtual][index] + "</b>";
-    
-    // Parar animação da seta
-    arrow.classList.remove("spin-anim");
-    }, 3000);
-    }
-    
+let currentLevel = "facil";
+
+const desafios = {
+  facil: [
+    "Conte uma curiosidade",
+    "Mostre algo da galeria",
+    "Fale seu emoji favorito",
+    "Conte 5 segredos",
+    "3 verdades e 1 mentira",
+    "Conte algo engraçado"
+  ],
+  medio: [
+    "Imite alguém",
+    "Envie áudio cantando",
+    "Mostre uma foto antiga",
+    "Conte um mico",
+    "Dance por 10s",
+    "Mostre sua última conversa"
+  ],
+  dificil: [
+    "Ligue para alguém",
+    "Mostre seu histórico",
+    "Algo que nunca contou",
+    "Revele a crush",
+    "Mostre a galeria por 5s",
+    "Fale algo vergonhoso"
+  ]
+};
+
+function setLevel(nivel) {
+  currentLevel = nivel;
+  document.getElementById("resultado").textContent = "---";
+  gerarSetores();
+}
+
+function gerarSetores() {
+  const wheel = document.getElementById("wheel");
+  wheel.innerHTML = ""; 
+
+  const lista = desafios[currentLevel];
+  const angulo = 360 / lista.length;
+
+  for (let i = 0; i < lista.length; i++) {
+    const setor = document.createElement("div");
+  
+    // cria a fatia
+    setor.style.transform = `rotate(${angulo * i}deg)`;
+  
+    // cor automática
+    setor.style.background = `hsl(${i * 60}, 80%, 50%)`;
+  
+    // texto centralizado certinho
+    setor.innerHTML = `
+      <span style="
+        transform: rotate(${angulo / 2}deg);
+      ">
+        ${lista[i]}
+      </span>
+    `;
+  
+    wheel.appendChild(setor);
+  }
+  
+}
+
+gerarSetores(); 
+
+function spinWheel() {
+  const wheel = document.getElementById("wheel");
+  let randomRotation = Math.floor(3000 + Math.random() * 3000);
+
+  wheel.style.transform = `rotate(${randomRotation}deg)`;
+
+  let sectors = desafios[currentLevel].length;
+  let angleSector = 360 / sectors;
+
+  setTimeout(() => {
+    let finalDegrees = randomRotation % 360;
+    let index = Math.floor((360 - finalDegrees) / angleSector) % sectors;
+
+    document.getElementById("resultado").textContent =
+      desafios[currentLevel][index];
+  }, 4000);
+}

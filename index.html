@@ -1,40 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roda dos Desafios</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Roda dos Desafios</title>
 </head>
-
 <body>
 
-<div class="app-container">
+  <div class="app-container">
+    <h1>🎈 Roda dos Desafios</h1>
 
-<h1>🎡 Roda dos Desafios</h1>
+    <div class="buttons">
+      <button onclick="setLevel('facil')" class="btn">Fácil</button>
+      <button onclick="setLevel('medio')" class="btn">Médio</button>
+      <button onclick="setLevel('dificil')" class="btn">Difícil</button>
+    </div>
 
-<!-- Botões de níveis -->
-<div class="levels">
-<button class="level-btn active" onclick="mudarNivel('facil', this)">Fácil</button>
-<button class="level-btn" onclick="mudarNivel('medio', this)">Médio</button>
-<button class="level-btn" onclick="mudarNivel('dificil', this)">Difícil</button>
-</div>
+    <div class="arrow"></div>
 
-<!-- Seta -->
-<div id="arrow" class="arrow"></div>
+    <div class="wheel" id="wheel"></div>
 
-<!-- Roda -->
-<div id="wheel" class="wheel"></div>
+    <button class="spin-btn" onclick="spinWheel()">GIRAR 🎲</button>
 
-<!-- Botão -->
-<button class="spin" onclick="girar()">GIRAR 🎲</button>
+    <p class="resultado">
+      🔍 Desafio: <span id="resultado">---</span>
+    </p>
 
-<!-- Resultado -->
-<div id="resultado"></div>
+  </div>
 
-</div>
-
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
